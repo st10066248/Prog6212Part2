@@ -1,34 +1,59 @@
-﻿using ClaimsManagamentSystem.Models;
+﻿using System.IO;
+using System.Web.Mvc;
+using ClaimsManagamentSystem.Models.ClaimsManagementSystem.Models;
+using ClaimsManagementSystem.Models;
 using Grpc.Core;
 using Microsoft.AspNetCore.Mvc;
-using System.Web.Mvc;
-using System.IO;
 
 namespace ClaimsManagementSystem.Controllers
 {
-    [HttpPost]
-public ActionResult SubmitClaim(LecturerClaim claim, HttpPostedFileBase file)
-{
-    if (ModelState.IsValid)
+    public class ClaimsController : Controller
     {
-        // File handling logic
-        if (file != null && file.ContentLength > 0)
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: Claims/Create
+        public ActionResult Create()
         {
-            string path = Path.Combine(Server.MapPath("~/Uploads/"), Path.GetFileName(file.FileName));
-            file.SaveAs(path);
-            claim.UploadedFilePath = path;
+            return View();
         }
 
-        claim.Status = "Pending"; // Initial status
-        claim.DateSubmitted = DateTime.Now;
+        // POST: Claims/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(LecturerClaim claim)
+        {
+            if (ModelState.IsValid)
+            {
+                // Handle file upload
+                if (claim.SupportingDocument != null && claim.SupportingDocument.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(claim.SupportingDocument.FileName);
+                    var path = Path.Combine(Server.MapPath("~/UploadedFiles"), fileName);
+                    claim.SupportingDocument.SaveAs(path);
+                    claim.SupportingDocumentPath = "/UploadedFiles/" + fileName; // Store the file path
+                }
 
-        _context.LecturerClaims.Add(claim);
-        _context.SaveChanges();
+                // Save the claim to the database
+                db.LecturerClaims.Add(claim);
+                db.SaveChanges();
 
-        return RedirectToAction("ClaimSubmitted");
+                return RedirectToAction("Index");
+            }
+
+            return View(claim);
+        }
+        // GET: Claims
+        public ActionResult Index()
+        {
+            var claims = db.LecturerClaims.ToList();
+            return View(claims);
+        }
+
     }
-    return View(claim);
-}
+
 
 }
+
+
+
 

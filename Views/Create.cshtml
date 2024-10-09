@@ -1,0 +1,38 @@
+﻿@model ClaimsManagementSystem.Models.LecturerClaim
+
+@{
+    ViewBag.Title = "Submit Claim";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Adjust as necessary
+}
+
+<h2>Submit Claim</h2>
+
+@using (Html.BeginForm("Create", "Claims", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.HoursWorked)
+        @Html.TextBoxFor(m => m.HoursWorked, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.HoursWorked, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.HourlyRate)
+        @Html.TextBoxFor(m => m.HourlyRate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.HourlyRate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AdditionalNotes)
+        @Html.TextAreaFor(m => m.AdditionalNotes, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Supporting Document")
+        <input type="file" name="SupportingDocument" class="form-control" />
+        @Html.ValidationMessageFor(m => m.SupportingDocumentPath, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
