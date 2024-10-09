@@ -1,0 +1,157 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claims Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">Claims Management System</h1>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Lecturer">Lecturer</a></li>
+                    <li><a href="/ProgramCoordinator">Program Coordinator</a></li>
+                    <li><a href="/AcademicManager">Academic Manager</a></li>
+                    <li><a href="/Privacy">Privacy</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to the Claims Management System</h2>
+            <p>Easily submit, verify, and track your claims in real-time!</p>
+            <div class="cta-buttons">
+                <a href="/Lecturer" class="cta">Lecturer</a>
+                <a href="/ProgramCoordinator" class="cta">Program Coordinator</a>
+                <a href="/AcademicManager" class="cta">Academic Manager</a>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f0f2f5;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    header {
+        background-color: #004080;
+        color: white;
+        padding: 0px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .navbar .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .navbar .nav-links {
+        list-style: none;
+        display: flex;
+    }
+
+        .navbar .nav-links li {
+            margin-left: 20px;
+        }
+
+            .navbar .nav-links li a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 20px;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+
+                .navbar .nav-links li a:hover {
+                    background-color: #00294d;
+                    border-radius: 5px;
+                }
+
+    .hero {
+        background-image: linear-gradient(to right, rgba(0, 64, 128, 0.8), rgba(0, 102, 204, 0.8)), url('https://via.placeholder.com/1600x400');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 150px 200px;
+    }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+    .cta-buttons a {
+        display: inline-block;
+        background-color: #0066cc;
+        color: white;
+        padding: 15px 30px;
+        margin: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .cta-buttons a:hover {
+            background-color: #004080;
+        }
+
+    footer {
+        background-color: #00294d;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+    }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+
+</style>
