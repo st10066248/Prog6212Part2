@@ -1,8 +1,8 @@
-using ClaimsManagamentSystem.Models;
+using CMS_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace ClaimsManagamentSystem.Controllers
+namespace CMS_MVC.Controllers
 {
     public class HomeController : Controller
     {

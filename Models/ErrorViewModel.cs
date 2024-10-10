@@ -1,4 +1,4 @@
-namespace ClaimsManagamentSystem.Models
+namespace CMS_MVC.Models
 {
     public class ErrorViewModel
     {
