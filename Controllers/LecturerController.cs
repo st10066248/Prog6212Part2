@@ -50,8 +50,10 @@ namespace ClaimsTrackingSystem.Controllers
 
         public IActionResult TrackClaims()
         {
-            var lecturerClaims = ClaimRepository.ClaimsList.Where(c => c.Status == ClaimStatus.Pending).ToList();
+            // Show all claims
+            var lecturerClaims = ClaimRepository.ClaimsList.ToList();
             return View(lecturerClaims);
         }
+
     }
 }

@@ -1,5 +1,4 @@
 ﻿@model List<ClaimsTrackingSystem.Models.Claim>
-@using System.IO
 
 @{
     var role = ViewData["Role"]?.ToString();
@@ -31,10 +30,10 @@
                 <td>@claim.Payout</td>
                 <td>@claim.Notes</td>
                 <td>
-                    @if (!string.IsNullOrEmpty(claim.DocumentPath))
+                    @if (!string.IsNullOrEmpty(claim.DocumentFileName))
                     {
-                        <a href="@Url.Content("~/uploads/" + Path.GetFileName(claim.DocumentPath))" target="_blank">
-                            @Path.GetFileName(claim.DocumentPath)
+                        <a href="@Url.Content("~/uploads/" + claim.DocumentFileName)" target="_blank">
+                            @claim.DocumentFileName
                         </a>
                     }
                     else
