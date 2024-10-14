@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Submit Claim";
+}
+
+<h2>Submit Claim</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Lecturer Name</label>
+        <input type="text" name="lecturerName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Hours Worked</label>
+        <input type="number" step="0.1" name="hoursWorked" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Hourly Rate</label>
+        <input type="number" step="0.1" name="hourlyRate" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea name="notes" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Upload Supporting Document</label>
+        <input type="file" name="document" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<hr />
+<a href="/">Back to Home</a>

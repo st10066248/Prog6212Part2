@@ -1,8 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome To The CMS Online Portal</h1>
-    
+<h2>Select Role</h2>
+
+<div class="list-group">
+    <a href="/Lecturer/SubmitClaim" class="list-group-item list-group-item-action">Lecturer: Submit Claim</a>
+    <a href="/Lecturer/TrackClaims" class="list-group-item list-group-item-action">Lecturer: Track Claim</a>
+    <a href="/Admin/ViewClaims?role=Manager" class="list-group-item list-group-item-action">Academic Manager: View and Approve/Reject Claims</a>
+    <a href="/Admin/ViewClaims?role=Coordinator" class="list-group-item list-group-item-action">Program Coordinator: View and Approve/Reject Claims</a>
 </div>

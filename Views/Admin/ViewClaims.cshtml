@@ -1,0 +1,66 @@
+﻿@model List<ClaimsTrackingSystem.Models.Claim>
+@using System.IO
+
+@{
+    var role = ViewData["Role"]?.ToString();
+    var title = role == "Manager" ? "Academic Manager: View Claims" : "Program Coordinator: View Claims";
+}
+
+<h2>@title</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Payout</th>
+            <th>Notes</th>
+            <th>Document</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.Payout</td>
+                <td>@claim.Notes</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(claim.DocumentPath))
+                    {
+                        <a href="@Url.Content("~/uploads/" + Path.GetFileName(claim.DocumentPath))" target="_blank">
+                            @Path.GetFileName(claim.DocumentPath)
+                        </a>
+                    }
+                    else
+                    {
+                        <span>No document uploaded</span>
+                    }
+                </td>
+                <td>@claim.Status</td>
+                <td>
+                    @if (claim.Status == ClaimsTrackingSystem.Models.ClaimStatus.Pending)
+                    {
+                        <form method="post" action="/Admin/ApproveClaim?role=@role" style="display:inline;">
+                            <input type="hidden" name="id" value="@claim.Id" />
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                        <form method="post" action="/Admin/RejectClaim?role=@role" style="display:inline;">
+                            <input type="hidden" name="id" value="@claim.Id" />
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<a href="/">Back to Home</a>
+

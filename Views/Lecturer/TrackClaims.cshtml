@@ -1,0 +1,47 @@
+﻿@model List<ClaimsTrackingSystem.Models.Claim>
+@using System.IO
+
+<h2>Track Claims</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Payout</th>
+            <th>Notes</th>
+            <th>Document</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.Payout</td>
+                <td>@claim.Notes</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(claim.DocumentPath))
+                    {
+                        <a href="@Url.Content("~/uploads/" + Path.GetFileName(claim.DocumentPath))" target="_blank">
+                            @Path.GetFileName(claim.DocumentPath)
+                        </a>
+                    }
+                    else
+                    {
+                        <span>No document uploaded</span>
+                    }
+                </td>
+                <td>@claim.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<a href="/">Back to Home</a>
+
