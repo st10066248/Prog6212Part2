@@ -1,17 +1,6 @@
 ﻿@model List<ClaimsTrackingSystem.Models.Claim>
-@using ClaimsTrackingSystem.Models
 
 <h2>Track Claims</h2>
-
-<!-- Search form -->
-<form method="get" action="/Lecturer/TrackClaims">
-    <div class="form-group">
-        <label for="lecturerName">Search by Lecturer Name:</label>
-        <input type="text" name="lecturerName" class="form-control" value="@ViewData["LecturerName"]" placeholder="Enter lecturer name" />
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-    <a href="/Lecturer/TrackClaims" class="btn btn-secondary">Reset</a>
-</form>
 
 @if (!Model.Any())
 {
@@ -23,9 +12,14 @@ else
         <thead>
             <tr>
                 <th>Lecturer Name</th>
+                <th>Surname</th>
+                <th>Month Claiming For</th>
                 <th>Hours Worked</th>
                 <th>Hourly Rate</th>
                 <th>Payout</th>
+                <th>Communication Method</th>
+                <th>Contact Information</th>
+                <th>Faculty</th>
                 <th>Notes</th>
                 <th>Document</th>
                 <th>Status</th>
@@ -36,9 +30,14 @@ else
             {
                 <tr>
                     <td>@claim.LecturerName</td>
+                    <td>@claim.Surname</td>
+                    <td>@claim.ClaimingForDate.ToString("MMMM yyyy")</td> <!-- Display month and year -->
                     <td>@claim.HoursWorked</td>
                     <td>@claim.HourlyRate</td>
                     <td>@claim.Payout</td>
+                    <td>@claim.CommunicationMethod</td> <!-- Email or SMS -->
+                    <td>@claim.ContactInfo</td> <!-- Email or Cellphone -->
+                    <td>@claim.Faculty</td> <!-- Faculty -->
                     <td>@claim.Notes</td>
                     <td>
                         @if (!string.IsNullOrEmpty(claim.DocumentFileName))
@@ -61,6 +60,7 @@ else
 
 <hr />
 <a href="/">Back to Home</a>
+
 
 
 

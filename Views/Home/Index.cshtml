@@ -2,11 +2,12 @@
     ViewData["Title"] = "Home";
 }
 
-<h2>Select Role</h2>
+<h2>Select Your Role</h2>
 
 <div class="list-group">
     <a href="/Lecturer/SubmitClaim" class="list-group-item list-group-item-action">Lecturer: Submit Claim</a>
-    <a href="/Lecturer/TrackClaims" class="list-group-item list-group-item-action">Lecturer: Track Claim</a>
-    <a href="/Admin/ViewClaims?role=Manager" class="list-group-item list-group-item-action">Academic Manager: View and Approve/Reject Claims</a>
-    <a href="/Admin/ViewClaims?role=Coordinator" class="list-group-item list-group-item-action">Program Coordinator: View and Approve/Reject Claims</a>
+    <a href="/Lecturer/TrackClaims" class="list-group-item list-group-item-action">Lecturer: Track Claims</a>
+    <a href="/Login/Index?role=Coordinator" class="list-group-item list-group-item-action">Login to Program Coordinator: View and Verify Claims</a>
+    <a href="/Login/Index?role=Manager" class="list-group-item list-group-item-action">Login to Academic Manager: View and Approve/Reject Claims</a>
+    
 </div>
