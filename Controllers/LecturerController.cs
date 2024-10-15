@@ -48,12 +48,25 @@ namespace ClaimsTrackingSystem.Controllers
             return RedirectToAction("TrackClaims");
         }
 
-        public IActionResult TrackClaims()
+        public IActionResult TrackClaims(string lecturerName = null)
         {
-            // Show all claims
+            // Get all claims
             var lecturerClaims = ClaimRepository.ClaimsList.ToList();
+
+            // If a lecturer name is provided, filter the claims by that name
+            if (!string.IsNullOrEmpty(lecturerName))
+            {
+                lecturerClaims = lecturerClaims
+                    .Where(c => c.LecturerName.ToLower().Contains(lecturerName.ToLower()))
+                    .ToList();
+            }
+
+            // Pass the current search term to the view
+            ViewData["LecturerName"] = lecturerName;
+
             return View(lecturerClaims);
         }
+
 
     }
 }

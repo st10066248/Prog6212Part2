@@ -6,7 +6,8 @@ namespace ClaimsTrackingSystem.Models
     public enum ClaimStatus
     {
         Pending,
-        Approved,
+        Verified,
+        Accepted,
         Rejected
     }
 
@@ -41,4 +42,5 @@ namespace ClaimsTrackingSystem.Models
         public static List<Claim> ClaimsList { get; set; } = new List<Claim>();
     }
 }
+
 

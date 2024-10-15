@@ -1,10 +1,21 @@
 ﻿@model List<ClaimsTrackingSystem.Models.Claim>
+@using ClaimsTrackingSystem.Models
 
 <h2>Track Claims</h2>
 
+<!-- Search form -->
+<form method="get" action="/Lecturer/TrackClaims">
+    <div class="form-group">
+        <label for="lecturerName">Search by Lecturer Name:</label>
+        <input type="text" name="lecturerName" class="form-control" value="@ViewData["LecturerName"]" placeholder="Enter lecturer name" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a href="/Lecturer/TrackClaims" class="btn btn-secondary">Reset</a>
+</form>
+
 @if (!Model.Any())
 {
-    <p>There Are No Claims Submitted, Please Check Back Later</p>
+    <p>There Are No Claims Submitted, Please Submit A Claim and Check Back</p>
 }
 else
 {
@@ -50,6 +61,7 @@ else
 
 <hr />
 <a href="/">Back to Home</a>
+
 
 
 
