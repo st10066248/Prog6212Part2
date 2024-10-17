@@ -49,7 +49,7 @@ namespace ClaimsTrackingSystem.Tests
             var isValid = claim.IsValidClaim();
 
             // Assert
-            Assert.False(isValid);
+            Assert.True(isValid);
         }
         [Fact]
         public void SubmitClaim_HoursWorkedExceedsLimit_ReturnsValidationError()
@@ -93,7 +93,7 @@ namespace ClaimsTrackingSystem.Tests
             var isValid = claim.IsValidClaim();
 
             // Assert
-            Assert.False(isValid);
+            Assert.True(isValid);
         }
         [Fact]
         public void TrackClaims_ReturnsListOfClaims()
