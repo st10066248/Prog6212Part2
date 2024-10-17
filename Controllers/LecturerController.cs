@@ -15,7 +15,7 @@ namespace ClaimsTrackingSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult SubmitClaim(string lecturerName, string surname, string claimingForDate, double hoursWorked, double hourlyRate, string notes, IFormFile document, CommunicationMethod communicationMethod, string contactInfo, Faculty faculty)
+        public IActionResult SubmitClaim(string lecturerName, string surname, string claimingForDate, int hoursWorked, int hourlyRate, string notes, IFormFile document, string communicationMethod, string contactInfo, string faculty)
         {
             try
             {
